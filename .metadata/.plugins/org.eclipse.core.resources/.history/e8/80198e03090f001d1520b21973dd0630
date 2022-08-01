@@ -1,0 +1,5 @@
+package net.hareesh.crudSpring.repository;
+
+public interface EmployeeRepository extends Jpa {
+
+}

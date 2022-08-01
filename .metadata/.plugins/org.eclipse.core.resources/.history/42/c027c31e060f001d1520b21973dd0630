@@ -1,0 +1,6 @@
+
+spring.datasource.url = jdbc:mysql://localhost:3306/employeemgmt
+spring.datasource.username = root
+spring.datasource.password = passwordtoor
+
+spring.jps.properties.hibernate.dialect = org.hibernate.do

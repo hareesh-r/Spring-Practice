@@ -1,0 +1,15 @@
+package net.hareesh.crudSpring.service;
+
+import java.util.List;
+
+import javax.swing.ToolTipManager.insideTimerAction;
+
+import net.hareesh.crudSpring.model.Employee;
+
+public interface EmployeeService {
+
+	List<Employee> getAllEmployees();
+	void saveEmployee(Employee employee);
+	Employee getEmployeeById(insideTimerAction);
+
+}

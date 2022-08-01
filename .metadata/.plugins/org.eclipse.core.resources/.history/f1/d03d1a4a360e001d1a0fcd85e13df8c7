@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Displaying User Data</title>
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<style>
+#frm {
+	width: 500px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.rad-card {
+	background:
+		url("https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080");
+	height: 100vh;
+}
+
+.card {
+	background-color: #ffffff26;
+	background: rgba(255 255 255/ 5%);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-head {
+	background-color: #5a5b5d42 !important;
+}
+
+table input, table select {
+	background-color: #ffffff00 !important;
+	color: black;
+	padding: 10px;
+	background: rgba(255 255 255/ 5%);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+}
+</style>
+
+</head>
+<body class='bg-itadori'>
+<script>
+const urlParams = new URLSearchParams(location.search);
+let id;
+for (const [key, value] of urlParams) {
+    id = `${value}`;
+}
+let userData = fetch("http://localhost:8080/crud-mvc/users?id="+id);
+userData.then((response)=>response.json().then(data=>{
+	data.forEach((item)=>{
+		document.getElementById("name").value = item.name;
+		document.getElementById("email").value = item.email;
+		document.getElementById("dob").value = item.dob;
+		document.getElementById("mobile").value = item.mobile;
+		document.getElementById("gender").value = item.gender;
+		document.getElementById("city").value = item.city;
+	})
+}));
+editUser=()=>{
+	e.preventDefault();
+	console.log(id)
+	console.log('http://localhost:8080/crud-mvc/users?id='+id+'&name='+document.getElementById("name").value+'&email='+document.getElementById("email").value);
+	fetch('http://localhost:8080/crud-mvc/users?id='+id+"&name="+document.getElementById("name").value+'&email='+document.getElementById("email").value, {
+		  method: 'PUT',
+		})
+		.then(res => res.text())
+		.then(res => console.log(res))
+	//window.location.reload();
+}
+
+
+</script>
+	<div class='bg-itadori' style='margin: auto; padding: 150px'>
+		<form class='glassmorp' post='put' action='http://localhost:8080/crud-mvc/users'>
+			<table class='table  text-white table-striped '>
+				<tr>
+					<td>Name</td>
+					<td><input class='text-white' id="name" type='text' name='name' value='' /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input class='text-white' id="email" type='text' name='email'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><input class='text-white' id="mobile" type='number' name='mobile'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td>DOB</td>
+					<td><input class='text-white' id="dob" type='date' name='DOB' value='' /></td>
+				</tr> 
+				<tr>
+					<td>City</td>
+					<td><input class='text-white' id="city" type='text' name='city' value='' /></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input class='text-white' id="gender" type='text' name='gender'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td><button type='submit' class='btn btn-outline-success'>Edit</button></td>
+					<td><button class='btn btn-outline-danger' type='reset'>Cancel</button></td>
+				</tr>
+			</table>
+		</form>
+		<a href="./userInfo.html" class='text-dark w-100' id="frm">
+				<button class='btn btn-outline-light w-100'>Show Users</button>
+			</a>
+</body>
+</html>

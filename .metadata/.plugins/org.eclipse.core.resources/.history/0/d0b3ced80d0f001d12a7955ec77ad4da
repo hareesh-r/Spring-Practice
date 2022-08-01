@@ -1,0 +1,18 @@
+package net.hareesh.crudSpring.repository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import net.hareesh.crudSpring.model.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	@Override
+	public List<Employee> getAllEmployees(){
+		
+	}
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SignUp form JSP</title>
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<style>
+#frm {
+	width: 500px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.rad-card {
+	background:
+		url("https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080");
+	height: 100vh;
+}
+
+.card {
+	background-color: #ffffff26;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-head {
+	background-color: #5a5b5d42 !important;
+}
+
+table input, table select {
+	background-color: #ffffff00 !important;
+	color: black;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+</style>
+</head>
+<body class="container-fluid rad-card">
+	<form action="http://localhost:8080/crud-mvc/users" class="form card"
+		method="post" id="frm">
+		<h2 class="bg-primary text-white card-header top-head">SignUp
+			Form</h2>
+		<table class="table table-hover">
+			<tr>
+				<td class='text-white'>Name :</td>
+				<td><input type="text" name="name" required /></td>
+			</tr>
+			<tr>
+				<td class='text-white'>Email :</td>
+				<td><input type="email" name="email" required /></td>
+			</tr>
+			<tr>
+				<td class='text-white'>Mobile :</td>
+				<td><input type="text" name="mobile" required /></td>
+			</tr>
+			<tr>
+				<td class='text-white'>DOB :</td>
+				<td><input type="date" name="DOB" required /></td>
+			</tr>
+			<tr>
+				<td class='text-white'>City :</td>
+				<td><select name="city">
+						<option value="Chennai">Chennai</option>
+						<option value="Guduvancherry">Guduvancherry</option>
+						<option value="Tenkasi">Tenkasi</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class='text-white'>Gender :</td>
+				<td><input type="radio" name="gender" value="male">
+					Male &nbsp; <input type="radio" name="gender" value="felmale">Female
+				</td>
+			</tr>
+			<tr class="card-footer">
+				<td><button class="btn btn-outline-light" type="submit">Register</button></td>
+				<td><button class="btn btn-outline-light" type="reset">Cancel</button></td>
+			</tr>
+			<tr>
+				<a href="/userInfo.html" class='text-dark w-100'>
+					<button class='btn btn-outline-light w-100'>Show Users</button>
+				</a>
+			</tr>
+			tr>
+		</table>
+
+
+	</form>
+
+</body>
+</html>

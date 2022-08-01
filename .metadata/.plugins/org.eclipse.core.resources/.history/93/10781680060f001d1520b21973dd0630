@@ -1,0 +1,5 @@
+package net.hareesh.crudSpring.model;
+
+public class Employee {
+
+}

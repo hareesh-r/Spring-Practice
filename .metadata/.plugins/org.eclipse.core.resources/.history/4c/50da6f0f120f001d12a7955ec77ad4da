@@ -1,0 +1,6 @@
+package net.hareesh.crudSpring.service;
+
+public interface EmployeeService {
+	
+
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+
+	<bean id="employee1" class="com.practice.Employee">
+		<property name="eid" value="1"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,4 @@
+module practice {
+	requires spring.context;
+	
+}

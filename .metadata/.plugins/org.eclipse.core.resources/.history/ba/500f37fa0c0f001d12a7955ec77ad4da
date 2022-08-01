@@ -1,0 +1,9 @@
+package net.hareesh.crudSpring.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import net.hareesh.crudSpring.model.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+	List
+}

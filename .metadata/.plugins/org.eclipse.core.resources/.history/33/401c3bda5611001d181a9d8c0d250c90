@@ -1,0 +1,6 @@
+package com.practice;
+
+public class Employee {
+	int eid;
+	String 
+}

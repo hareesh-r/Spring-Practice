@@ -1,0 +1,3 @@
+
+spring.atasource.url = jdbc:mysql://localhost:3306/employeemgmt
+spring.

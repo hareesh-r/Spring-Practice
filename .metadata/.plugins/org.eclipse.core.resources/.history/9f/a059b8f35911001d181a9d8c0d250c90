@@ -1,0 +1,16 @@
+package com.practice;
+
+public class Client {
+	public static void main(String[] args)
+	{
+		Employee employee = new Employee();
+		employee.setEid(0);
+		employee.setEname("Hareesh");
+		employee.setEsalary(20000);
+		
+		System.out.println(employee);
+		
+		//Inversion of Control (IOC)
+		
+	}
+}

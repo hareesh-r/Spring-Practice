@@ -1,0 +1,12 @@
+package net.hareesh.crudSpring.service;
+
+import java.util.List;
+
+import net.hareesh.crudSpring.model.Employee;
+
+public interface EmployeeService {
+
+	List<Employee> getAllEmployees();
+	void 
+
+}

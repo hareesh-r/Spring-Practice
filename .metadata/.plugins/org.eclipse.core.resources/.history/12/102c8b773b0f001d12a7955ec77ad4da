@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Employees</title>
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<style>
+#frm {
+	width: 500px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.rad-card {
+	background:
+		url("https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080");
+	height: 100vh;
+}
+
+.card {
+	background-color: #ffffff26;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-head {
+	background-color: #5a5b5d42 !important;
+}
+
+table input, table select {
+	background-color: #ffffff00 !important;
+	color: black;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+</style>
+</head>
+<body>
+
+	<div class='container my-2'>
+		<h1>Employee List</h1>
+		<table border="1" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>DOB</th>
+					<th>City</th>
+					<th>Gender</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${listEmployees}">
+					<td th:text=${employee.name}></td>
+					<td th:text=${employee.email}></td>
+					<td th:text=${employee.mobile}></td>
+					<td th:text=${employee.dob}></td>
+					<td th:text=${employee.city}></td>
+					<td th:text=${employee.gender}></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
+						class='btn btn-primary'>Update</a><a th:href="@{/deleteUsser/{id}(id=${employee.id})}"
+						class='btn btn-danger'>Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a class='btn btn-primary btn-sm mb-3'
+			th:href="@{/showNewEmployeeForm}">Add Employee</a>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Employees</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	
+	<div  class='container my-2'>
+		<h1>Employee List</h1>
+		<table border="1" class='table table-striped table-responsive-md'>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>DOB</th>
+					<th>City</th>
+					<th>Gender</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${listEmployees}">
+					<td th:text=${employee.name}></td>
+					<td th:text=${employee.email}></td>
+					<td th:text=${employee.mobile}></td>
+					<td th:text=${employee.dob}></td>
+					<td th:text=${employee.city}></td>
+					<td th:text=${employee.gender}></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${})}"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a class='btn btn-primary btn-sm mb-3' th:href = "@{/showNewEmployeeForm}">Add Employee</a>
+	</div>
+
+</body>
+</html>

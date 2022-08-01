@@ -1,0 +1,6 @@
+package springcrud.controller;
+
+@Controler
+public class MainController {
+
+}

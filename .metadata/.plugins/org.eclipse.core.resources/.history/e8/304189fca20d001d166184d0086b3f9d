@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Displaying User Data</title>
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<style>
+#frm {
+	width: 500px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.rad-card {
+	background:
+		url("https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080");
+	height: 100vh;
+}
+
+.card {
+	background-color: #ffffff26;
+	background: rgba(255 255 255/ 5%);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-head {
+	background-color: #5a5b5d42 !important;
+}
+
+table input, table select {
+	background-color: #ffffff00 !important;
+	color: black;
+	padding: 10px;
+	background: rgba(255 255 255/ 5%);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+</style>
+
+</head>
+<body class='bg-itadori'>
+<script>
+
+fetch()
+
+
+
+</script>
+	<div class='bg-itadori' style='margin: auto; padding: 150px'>
+		<form class='glassmorp' method='post' action='edit?id="+id+"'>
+			<table class='table  text-white table-striped '>
+				<tr>
+					<td>Name</td>
+					<td><input type='text' name='name' value='' /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type='text' name='email'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><input type='number' name='mobile'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td>DOB</td>
+					<td><input type='date' name='DOB' value='' /></td>
+				</tr>
+				<tr>
+					<td>City</td>
+					<td><input type='text' name='city' value='' /></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input type='text' name='gender'
+						value='' /></td>
+				</tr>
+				<tr>
+					<td><button class='btn btn-outline-success' type='submit'>Edit</button></td>
+					<td><button class='btn btn-outline-danger' type='reset'>Cancel</button></td>
+				</tr>
+			</table>
+		</form>
+</body>
+</html>

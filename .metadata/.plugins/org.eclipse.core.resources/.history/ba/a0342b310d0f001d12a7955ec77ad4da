@@ -1,0 +1,5 @@
+package net.hareesh.crudSpring.service;
+
+public class EmployeeServiceImpl {
+
+}

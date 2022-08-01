@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Displaying User Data</title>
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<style>
+#frm {
+	width: 500px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.rad-card {
+	background:
+		url("https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080");
+	height: 100vh;
+}
+
+.card {
+	background-color: #ffffff26;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(3.5px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-head {
+	background-color: #5a5b5d42 !important;
+}
+
+table input, table select {
+	background-color: #ffffff00 !important;
+	color: black;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1px);
+	-webkit-backdrop-filter: blur(3.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+</style>
+</head>
+<body>
+	<div class='bg-itadori' style='margin: auto;padding:100px'>
+		<table id="container-table"
+			class='table table-hover glassmorp table-striped text-white' >
+			<tbody>
+				<script>
+					let userData = fetch("http://localhost:8080/crud-mvc/users");
+					userData.then((response)=>response.json().then(data=>{
+						let htmlString = "<tr><th>ID</th><th>Name</th><th>Email</th><th>Mobile</th><th>DOB</th><th>City</th><th>Gender</th><th>Edit</th><th>Delete</th></tr>";
+						data.forEach((item)=>{
+							htmlString += "<tr><td>"+item.id+"</td><td>"+item.name+"</td><td>"+item.email+"</td><td>"+item.mobile+"</td><td>"+item.dob+"</td><td>"+item.city+"</td><td>"+item.gender+"</td><td><a href='editurl?id="+item.id+"' /> <img style='width: 20px; height: 20px; filter: invert(1)'src='https://cdn-icons-png.flaticon.com/512/84/84380.png' /></td><td><img onclick=\"deleteUser("+item.id+")\" style='width: 20px; height: 20px; filter: invert(1)'src='https://cdn-icons-png.flaticon.com/512/1345/1345874.png' /></a></td></tr>";
+						})
+						console.log(htmlString);
+						document.getElementById("container-table").innerHTML = htmlString+"<td><a href='home.html'><button class='btn btn-outline-success'>Home</button> </a></td>";
+					}));
+					deleteUser =(id)=>{
+						console.log(id);
+						fetch('http://localhost:8080/crud-mvc/users?id=' + id, {
+							  method: 'DELETE',
+							})
+							.then(res => res.text())
+							.then(res => console.log(res))
+						
+					}
+				</script>
+				<tr>
+					<td><a href='home.html'><button
+								class='btn btn-outline-success'>Home</button> </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

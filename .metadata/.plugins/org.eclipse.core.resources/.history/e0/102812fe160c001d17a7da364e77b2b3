@@ -1,0 +1,103 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/editurl")
+public class Edit extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	public final String query = "select name,email,mobile,dob,city,gender from user where id=?";
+	public static Map<String,String[]> db = new HashMap<>(); 
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		 PrintWriter pw = res.getWriter();
+		 res.setContentType("text/html");
+		 pw.println("<link rel='stylesheet' href='css/bootstrap.css' />");
+		 pw.println("<style>.bg-itadori {"
+			 		+ "	background: url(\"https://www.xtrafondos.com/en/descargar.php?id=7461&resolucion=1920x1080\");"
+			 		+ "	height:100vh;"
+			 		+ "}"
+			 		+ ""
+			 		+ ".glassmorp {"
+			 		+ " color:white;"
+			 		+"background: rgba( 255, 255, 255, 0.1 );"
+			 		+"box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );"
+			 		+"backdrop-filter: blur( 12.5px );"
+			 		+"-webkit-backdrop-filter: blur( 12.5px );"
+			 		+"border-radius: 10px;"
+			 		+"border: 1px solid rgba( 255, 255, 255, 0.18 );</style>");
+		 
+		 int id = Integer.parseInt(req.getParameter("id"));
+		 try { 
+			 Class.forName("com.mysql.cj.jdbc.Driver");
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		 
+		 try(Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/employeemgmt","root","passwordtoor");
+				 PreparedStatement ps = con.prepareStatement(query);){
+			 ps.setInt(1,id);
+			 ResultSet rs = ps.executeQuery();
+			 
+			 rs.next();
+			 pw.println("<div class='bg-itadori' style='margin:auto;padding:150px'>") ;
+			 pw.println("<form class='glassmorp' method='post' action='edit?id="+id+"' >");
+			 pw.println("<table class='table  text-white table-striped '>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>Name</td>");
+			 pw.println("<td><input type='text' name='name' value='"+rs.getString(1)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>Email</td>");
+			 pw.println("<td><input type='text' name='email' value='"+rs.getString(2)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>Mobile</td>");
+			 pw.println("<td><input type='number' name='mobile' value='"+rs.getString(3)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>DOB</td>");
+			 pw.println("<td><input type='date' name='DOB' value='"+rs.getString(4)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>City</td>");
+			 pw.println("<td><input type='text' name='city' value='"+rs.getString(5)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td class='text-white' style='color:white !important;'>Gender</td>");
+			 pw.println("<td><input type='text' name='gender' value='"+rs.getString(6)+"'</td>");
+			 pw.println("</tr>");
+			 pw.println("<tr>");
+			 pw.println("<td><button class='btn btn-outline-success' type='submit'>Edit</button></td>");
+			 pw.println("<td><button class='btn btn-outline-danger' type='reset'>Cancel</button></td>");
+			 pw.println("</tr>");
+			 pw.println("</table>");
+			 pw.println("</form>");
+		
+		 }catch(SQLException se) {
+			 pw.println("<h2 class='bg-danger text-light text-center' >"+se.getMessage()+"</h2>");
+			 se.printStackTrace();
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 pw.println("<a href='home.html'><button class='btn btn-outline-success'> Home </button> </a>");
+		 pw.print("</div>");
+		 pw.close();
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res ) throws ServletException, IOException {
+		
+	} 
+}

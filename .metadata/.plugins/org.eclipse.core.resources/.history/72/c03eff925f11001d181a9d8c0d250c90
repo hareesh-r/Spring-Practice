@@ -1,0 +1,21 @@
+package com.practice;
+
+import org.springframework.context.event.App;
+
+public class Client {
+	public static void main(String[] args)
+	{
+		Employee employee = new Employee();
+		employee.setEid(0);
+		employee.setEname("Hareesh");
+		employee.setEsalary(20000);
+		
+		System.out.println(employee);
+		
+		//Inversion of Control (IOC)
+		// 1. Adding the JAR Files
+		// 2. Configure Java Objects in an XML file
+		// 3. Use IOC Container eg:BeanFactory or ApplicationContext to get the objects constructed by them
+		ApplicationContext application = new ClassPathXmlApplicationContext("employee.xml");
+	}
+}
